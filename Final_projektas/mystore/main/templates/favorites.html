@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class="container_brand">
+    <div class="home_div">
+        <h1>Favorite Products</h1>
+        {% if favorites %}
+            <ul>
+            {% for favorite in favorites %}
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ favorite.image_url }}" alt="{{ favorite.product.title }}">
+                    <p class="card-text"><a href="{% url 'product_detail' favorite.product.id %}">{{ favorite.product.title }}</a></p>
+            </div>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no favorite products yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
